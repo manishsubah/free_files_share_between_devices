@@ -1,0 +1,13 @@
+name: ffs_transport
+description: "Transport and connection interfaces shared by all connection types."
+publish_to: none
+version: 0.1.0
+resolution: workspace
+
+environment:
+  sdk: ^3.13.1
+dependencies:
+  ffs_foundation:
+    path: ../../core/foundation
+dev_dependencies:
+  test: ^1.31.1

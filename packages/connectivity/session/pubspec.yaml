@@ -1,0 +1,11 @@
+name: ffs_session
+description: "Connection manager that picks the best available transport."
+publish_to: none
+version: 0.1.0
+resolution: workspace
+
+environment:
+  sdk: ^3.13.1
+dependencies:
+  ffs_transport:
+    path: ../transport

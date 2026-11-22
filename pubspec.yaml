@@ -1,21 +1,50 @@
-name: free_files_share_between_devices
-description: "A new Flutter project."
-publish_to: 'none'
-
-version: 1.0.0+1
+name: freefileshare_workspace
+publish_to: none
 
 environment:
   sdk: ^3.13.1
 
-dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.8
+workspace:
+  - apps/desktop
+  - apps/mobile
+  - packages/core/foundation
+  - packages/core/design_system
+  - packages/core/di
+  - packages/core/storage
+  - packages/core/platform
+  - packages/connectivity/transport
+  - packages/connectivity/transport_lan
+  - packages/connectivity/secure_channel
+  - packages/connectivity/protocol
+  - packages/connectivity/session
+  - packages/features/onboarding
+  - packages/features/discovery
+  - packages/features/pairing
+  - packages/features/transfer
+  - packages/features/history
+  - packages/features/settings
+  - packages/navigation
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flutter_lints: ^6.0.0
+  melos: ^8.10.1
 
-flutter:
-  uses-material-design: true
+melos:
+  repository: https://github.com/manishsubah/free_files_share_between_devices
+
+  scripts:
+    gen:
+      description: Run code generation (freezed, injectable, auto_route) in packages that need it.
+      exec:
+        command: dart run build_runner build
+        orderDependents: true
+        concurrency: 1
+      packageFilters:
+        dependsOn: build_runner
+
+    verify:
+      description: Check formatting, analyze and test everything (same as CI).
+      steps:
+        - dart run melos format --output=none --set-exit-if-changed
+        - dart run melos analyze --fatal-infos --fatal-warnings
+        - dart run melos test

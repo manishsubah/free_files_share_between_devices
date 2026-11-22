@@ -1,0 +1,11 @@
+name: ffs_di
+description: "Shared GetIt instance and dependency injection environments."
+publish_to: none
+version: 0.1.0
+resolution: workspace
+
+environment:
+  sdk: ^3.13.1
+dependencies:
+  get_it: ^9.3.0
+  injectable: ^3.0.0
